@@ -1,3 +1,5 @@
+// ConsoleApplication1 サンプルプログラム Copyright(C) https://www.youtube.com/@ProgrammerCpp
+// 解説動画URL https://youtube.com/live/6-vZXCu0MS0
 #include <stdio.h>
 #include <fstream>
 #include <numeric>

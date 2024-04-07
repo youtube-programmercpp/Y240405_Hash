@@ -1,3 +1,4 @@
+// BCryptOpenAlgorithmProvider ä÷êî Copyright(C) https://www.youtube.com/@ProgrammerCpp
 #include "BCryptOpenAlgorithmProvider.h"
 #include <stdexcept>
 #include <string>

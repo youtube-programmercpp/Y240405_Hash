@@ -1,5 +1,7 @@
+// BCryptDestroyHash ƒNƒ‰ƒX Copyright(C) https://www.youtube.com/@ProgrammerCpp
 #include "BCryptDestroyHash.h"
 #include <string>
+#include <assert.h>
 
 WinApiCpp::BCryptDestroyHash::BCryptDestroyHash() noexcept
 	: hHash       {}
@@ -22,10 +24,7 @@ WinApiCpp::BCryptDestroyHash::BCryptDestroyHash
 WinApiCpp::BCryptDestroyHash::~BCryptDestroyHash()
 {
 	if (valid_handle) {
-		if (const auto status = ::BCryptDestroyHash
-		( hHash
-		))
-			OutputDebugStringA((__FILE__ "(" _CRT_STRINGIZE(__LINE__) "): BCryptDestroyHash failed with "+std::to_string(status) + "\n").c_str());
+		Execute(hHash);
 	}
 	delete[] pbHashObject;
 }
@@ -54,5 +53,24 @@ WinApiCpp::BCryptDestroyHash::operator bool() const noexcept
 }
 BCRYPT_ALG_HANDLE WinApiCpp::BCryptDestroyHash::get() const noexcept
 {
+	assert(valid_handle);
 	return hHash;
+}
+BCRYPT_HASH_HANDLE WinApiCpp::BCryptDestroyHash::release() noexcept
+{
+	assert(valid_handle);
+	auto retval  = hHash  ;
+	hHash        = nullptr;
+	valid_handle = false  ;
+	return retval;
+}
+void WinApiCpp::BCryptDestroyHash::Execute(_Inout_ BCRYPT_HASH_HANDLE  hHash) noexcept
+{
+	if (const auto status = ::BCryptDestroyHash
+	( /*_Inout_ BCRYPT_HASH_HANDLE  hHash*/hHash
+	)) {
+#ifdef _DEBUG
+		OutputDebugStringA((__FILE__ "(" _CRT_STRINGIZE(__LINE__) "): BCryptDestroyHash failed with "+std::to_string(status) + "\n").c_str());
+#endif
+	}
 }

@@ -1,3 +1,4 @@
+// BCryptDestroyHash ƒNƒ‰ƒX Copyright(C) https://www.youtube.com/@ProgrammerCpp
 #pragma once
 #include <Windows.h>
 #include <bcrypt.h>
@@ -20,5 +21,7 @@ namespace WinApiCpp {
 		auto operator=(BCryptDestroyHash&& r) noexcept->BCryptDestroyHash&;
 		explicit operator bool() const noexcept;
 		BCRYPT_HASH_HANDLE get() const noexcept;
+		BCRYPT_HASH_HANDLE release() noexcept;
+		static void Execute(_Inout_ BCRYPT_HASH_HANDLE  hHash) noexcept;
 	};
 }

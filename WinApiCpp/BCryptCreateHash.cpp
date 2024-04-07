@@ -1,3 +1,4 @@
+// BCryptCreateHash ä÷êî Copyright(C) https://www.youtube.com/@ProgrammerCpp
 #include "BCryptCreateHash.h"
 #include "BCryptGetProperty.h"
 #include <stdexcept>

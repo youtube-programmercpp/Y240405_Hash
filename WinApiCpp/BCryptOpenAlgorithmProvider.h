@@ -1,3 +1,4 @@
+// BCryptOpenAlgorithmProvider ä÷êî Copyright(C) https://www.youtube.com/@ProgrammerCpp
 #pragma once
 #include "BCryptCloseAlgorithmProvider.h"
 #include <Windows.h>
